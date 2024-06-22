@@ -68,17 +68,33 @@ const ProdutoList = () => {
                 <input name="estoque" placeholder="Estoque" value={form.estoque} onChange={handleChange} />
                 <button className='btn' type="submit">{editando ? 'Atualizar' : 'Adicionar'}</button>
             </form>
-            <ul className="produto-list-items">
-                {produtos.map((produto) => (
-                    <li key={produto._id} className="produto-item">
-                        <span className="span">{produto.nome} - {produto.preco} - {produto.categoria} - {produto.estoque}</span>
-                        <div className='produto-buttons'> 
-                            <button className='btn' onClick={() => handleEdit(produto)}>Editar</button>
-                            <button className='btn' onClick={() => handleDelete(produto._id)}>Deletar</button>
-                        </div>
-                    </li>
-                ))}
-            </ul>
+    <table className="cliente-table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Preço</th>
+          <th>Categoria</th>
+          <th>Estoque</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {produtos.map((produto) => (
+          <tr key={produto._id}>
+            <td>{produto.nome}</td>
+            <td>{produto.preco}</td>
+            <td>{produto.categoria}</td>
+            <td>{produto.estoque}</td>
+            <td>
+              <div className="cliente-buttons">
+                <button className="btn" onClick={() => handleEdit(produto)}>Editar</button>
+                <button className="btn" onClick={() => handleDelete(produto._id)}>Deletar</button>
+              </div>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
         </div>
     );
 };

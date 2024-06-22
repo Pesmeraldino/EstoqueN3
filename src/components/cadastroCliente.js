@@ -69,33 +69,31 @@ const ClienteList = () => {
       <input name="telefone" placeholder="Telefone" value={form.telefone} onChange={handleChange} />
       <button className="btn" type="submit">{editando ? 'Atualizar' : 'Adicionar'}</button>
     </form>
-    <div className="Legenda">
-    </div>
     <table className="cliente-table">
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Email</th>
-      <th>Telefone</th>
-      <th>Ações</th>
-    </tr>
-  </thead>
-  <tbody>
-    {clientes.map((cliente) => (
-      <tr key={cliente._id} className="cliente-item">
-        <td>{cliente.nome}</td>
-        <td>{cliente.email}</td>
-        <td>{cliente.telefone}</td>
-        <td>
-          <div className="cliente-buttons">
-            <button className="btn" onClick={() => handleEdit(cliente)}>Editar</button>
-            <button className="btn" onClick={() => handleDelete(cliente._id)}>Deletar</button>
-          </div>
-        </td>
-      </tr>
-    ))}
-  </tbody>
-</table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Telefone</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {clientes.map((cliente) => (
+          <tr key={cliente._id}>
+            <td>{cliente.nome}</td>
+            <td>{cliente.email}</td>
+            <td>{cliente.telefone}</td>
+            <td>
+              <div className="cliente-buttons">
+                <button className="btn" onClick={() => handleEdit(cliente)}>Editar</button>
+                <button className="btn" onClick={() => handleDelete(cliente._id)}>Deletar</button>
+              </div>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   </div>
   );
 };
